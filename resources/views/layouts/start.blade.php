@@ -20,18 +20,17 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="css/register.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{url('assets/css/app.css')}}"/>
+        <link rel="stylesheet" href="/css/start.css">
+        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     </head>
     <body>
         <center>
-            <div id='start'>
+            
                 <div id="main-container" class="container">
                     @include('inc.messages')
                     @yield('content')
                 </div>
-            </div>
+           
         </center>
     </body>
 </html>
