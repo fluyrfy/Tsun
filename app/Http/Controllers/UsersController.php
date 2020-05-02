@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -30,5 +31,26 @@ class UsersController extends Controller
         $users->save();
         return back()->with('message','註冊成功~');
         
+    }
+    public function getSignin()
+    {
+        return view('users.signin');
+    }
+    public function postSignin(Request $request)
+    {
+        $this->validate($request,[
+            'phone' => 'required',
+            'password' => 'required'
+        ]);
+        if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) 
+        {
+            return redirect('/diningmethod')->with('message','登入成功!!');
+        }
+        //return redirect()->back();
+        
+    }
+    public function getProfile()
+    {
+        return view('users.profile');
     }
 }

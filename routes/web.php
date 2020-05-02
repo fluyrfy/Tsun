@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'PagesController@index');
-Route::get('/diningmethod', 'PagesController@diningmethod');
+Route::get('/diningmethod', [
+    'uses' => 'PagesController@diningmethod',
+    'as' => 'order.diningmethod'
+]);
 Route::get('/eatin', 'ProductController@getIndex');
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
@@ -36,6 +39,22 @@ Route::post('/signup',[
     'uses' => 'UsersController@postSignup',
     'as' => 'users.signup'
 ]);
+
+Route::get('/signin',[
+    'uses' => 'UsersController@getSignin',
+    'as' => 'users.signin'
+]);
+
+Route::post('/signin',[
+    'uses' => 'UsersController@postSignin',
+    'as' => 'users.signin'
+]);
+
+Route::get('/users/profile',[
+    'uses' => 'UsersController@getProfile',
+    'as' => 'users.profile'
+]
+);
 
 
 

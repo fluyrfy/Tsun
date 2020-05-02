@@ -1,0 +1,223 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+:root {
+    --blue: #3490dc;
+    --indigo: #6574cd;
+    --purple: #9561e2;
+    --pink: #f66d9b;
+    --red: #e3342f;
+    --orange: #f6993f;
+    --yellow: #ffed4a;
+    --green: #38c172;
+    --teal: #4dc0b5;
+    --cyan: #6cb2eb;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #3490dc;
+    --secondary: #6c757d;
+    --success: #38c172;
+    --info: #6cb2eb;
+    --warning: #ffed4a;
+    --danger: #e3342f;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Nunito", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+ 
+  
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    font-family: Poppins;
+    color: #424B54;
+    background: #81C0C0;
+    padding-bottom: 11rem;
+  }
+#main-container {
+    background-color: #FFFFAA;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 3px solid #FF9224;
+  }
+
+marquee{
+    font-family: "微軟正黑體";
+    font-size:20px;
+    height:30px;
+    width:350px;
+    background-color:white;
+    
+}
+button{
+    font-size: 18px;
+    font-family: "微軟正黑體";
+    color: blue;
+    background-color: cadetblue;
+}
+
+#form1{
+    color: #4682b4;
+    font-size: 18px;
+    font-family: "微軟正黑體";
+}
+
+#title{
+    color: #1ae3f19f;
+    font-size: 32px;
+    font-family: "微軟正黑體";
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+  
+  .alert-heading {
+    color: inherit;
+  }
+  
+  .alert-link {
+    font-weight: 700;
+  }
+  
+  .alert-dismissible {
+    padding-right: 3.85rem;
+  }
+  
+  .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+  }
+  
+  .alert-primary {
+    color: #1b4b72;
+    background-color: #d6e9f8;
+    border-color: #c6e0f5;
+  }
+  
+  .alert-primary hr {
+    border-top-color: #b0d4f1;
+  }
+  
+  .alert-primary .alert-link {
+    color: #113049;
+  }
+  
+  .alert-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+  }
+  
+  .alert-secondary hr {
+    border-top-color: #c8cbcf;
+  }
+  
+  .alert-secondary .alert-link {
+    color: #202326;
+  }
+.alert-success {
+    color: #1d643b;
+    background-color: #d7f3e3;
+    border-color: #c7eed8;
+  }
+  
+  .alert-success hr {
+    border-top-color: #b3e8ca;
+  }
+  
+  .alert-success .alert-link {
+    color: #123c24;
+  }
+  .alert-info {
+    color: #385d7a;
+    background-color: #e2f0fb;
+    border-color: #d6e9f9;
+  }
+  
+  .alert-info hr {
+    border-top-color: #c0ddf6;
+  }
+  
+  .alert-info .alert-link {
+    color: #284257;
+  }
+  
+  .alert-warning {
+    color: #857b26;
+    background-color: #fffbdb;
+    border-color: #fffacc;
+  }
+  
+  .alert-warning hr {
+    border-top-color: #fff8b3;
+  }
+  
+  .alert-warning .alert-link {
+    color: #5d561b;
+  }
+  
+  .alert-danger {
+    color: #761b18;
+    background-color: #f9d6d5;
+    border-color: #f7c6c5;
+  }
+  
+  .alert-danger hr {
+    border-top-color: #f4b0af;
+  }
+  
+  .alert-danger .alert-link {
+    color: #4c110f;
+  }
+  
+  .alert-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+  }
+  
+  .alert-light hr {
+    border-top-color: #ececf6;
+  }
+  
+  .alert-light .alert-link {
+    color: #686868;
+  }
+  
+  .alert-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+  }
+  
+  .alert-dark hr {
+    border-top-color: #b9bbbe;
+  }
+  
+  .alert-dark .alert-link {
+    color: #040505;
