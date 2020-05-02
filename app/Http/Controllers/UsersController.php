@@ -29,7 +29,7 @@ class UsersController extends Controller
         $users->phone = $request->input('phone');
         $users->password = bcrypt($request->input('password'));
         $users->save();
-        return back()->with('message','註冊成功~');
+        return redirect()->route('users.signin')->with('message','註冊成功~');
         
     }
     public function getSignin()
