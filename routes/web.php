@@ -30,31 +30,40 @@ Route::get('/shopping-cart', [
     'uses' => 'ProductController@getCart',
     'as' => 'product.shoppingCart'
 ]);
-Route::get('/signup',[
-    'uses' => 'UsersController@getSignup',
-    'as' => 'users.signup'
-]);
 
-Route::post('/signup',[
-    'uses' => 'UsersController@postSignup',
-    'as' => 'users.signup'
-]);
-
-Route::get('/signin',[
-    'uses' => 'UsersController@getSignin',
-    'as' => 'users.signin'
-]);
-
-Route::post('/signin',[
-    'uses' => 'UsersController@postSignin',
-    'as' => 'users.signin'
-]);
-
-Route::get('/users/profile',[
-    'uses' => 'UsersController@getProfile',
-    'as' => 'users.profile'
-]
-);
+Route::group(['prefix' => 'users'], function ()
+{
+    Route::get('/signup',[
+        'uses' => 'UsersController@getSignup',
+        'as' => 'users.signup'
+    ]);
+    
+    Route::post('/signup',[
+        'uses' => 'UsersController@postSignup',
+        'as' => 'users.signup'
+    ]);
+    
+    Route::get('/signin',[
+        'uses' => 'UsersController@getSignin',
+        'as' => 'users.signin'
+    ]);
+    
+    Route::post('/signin',[
+        'uses' => 'UsersController@postSignin',
+        'as' => 'users.signin'
+    ]);
+    
+    Route::get('/profile',[
+        'uses' => 'UsersController@getProfile',
+        'as' => 'users.profile'
+    ]
+    );
+    Route::get('/logout',[
+        'uses' => 'UsersController@getLogout',
+        'as' => 'users.logout'
+    ]
+    );
+});
 
 
 

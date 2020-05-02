@@ -46,11 +46,15 @@ class UsersController extends Controller
         {
             return redirect('/diningmethod')->with('message','登入成功!!');
         }
-        return redirect()->back();
+        return redirect()->back()->with('error','電話or密碼錯誤!!');
         
     }
     public function getProfile()
     {
         return view('users.profile');
+    }
+    public function getLogout()
+    {
+        Auth::logout();
     }
 }
