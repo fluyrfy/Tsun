@@ -46,7 +46,11 @@ class UsersController extends Controller
         {
             return redirect('/diningmethod')->with('message','登入成功!!');
         }
+<<<<<<< HEAD
         return redirect()->back();
+=======
+        //return redirect()->back();
+>>>>>>> master
         
     }
     public function getProfile()
