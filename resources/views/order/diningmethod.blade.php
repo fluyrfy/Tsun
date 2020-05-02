@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            用餐方式 幹你娘
+            用餐方式
         </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
