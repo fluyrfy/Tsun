@@ -47,9 +47,15 @@ class UsersController extends Controller
             return redirect('/diningmethod')->with('message','登入成功!!');
         }
 <<<<<<< HEAD
+<<<<<<< Updated upstream
         return redirect()->back();
 =======
         //return redirect()->back();
+=======
+        //return redirect()->back();
+=======
+        return redirect()->back();
+>>>>>>> Stashed changes
 >>>>>>> master
         
     }
