@@ -21,7 +21,10 @@ Route::get('/diningmethod', [
     'uses' => 'PagesController@diningmethod',
     'as' => 'order.diningmethod'
 ]);
-Route::get('/eatin', 'ProductController@getIndex');
+Route::get('/eatin', [
+    'uses' => 'ProductController@getIndex',
+    'as' => 'order.eatin'
+]);
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as' => 'product.addToCart'
@@ -33,36 +36,39 @@ Route::get('/shopping-cart', [
 
 Route::group(['prefix' => 'users'], function ()
 {
-    Route::get('/signup',[
-        'uses' => 'UsersController@getSignup',
-        'as' => 'users.signup'
-    ]);
-    
-    Route::post('/signup',[
-        'uses' => 'UsersController@postSignup',
-        'as' => 'users.signup'
-    ]);
-    
-    Route::get('/signin',[
-        'uses' => 'UsersController@getSignin',
-        'as' => 'users.signin'
-    ]);
-    
-    Route::post('/signin',[
-        'uses' => 'UsersController@postSignin',
-        'as' => 'users.signin'
-    ]);
-    
-    Route::get('/profile',[
-        'uses' => 'UsersController@getProfile',
-        'as' => 'users.profile'
-    ]
-    );
-    Route::get('/logout',[
-        'uses' => 'UsersController@getLogout',
-        'as' => 'users.logout'
-    ]
-    );
+    Route::group(['middleware' =>'guest'], function()
+    {
+        Route::get('/signup',[
+            'uses' => 'UsersController@getSignup',
+            'as' => 'users.signup'
+        ]);
+
+        Route::post('/signup',[
+            'uses' => 'UsersController@postSignup',
+            'as' => 'users.signup'
+        ]);
+
+        Route::get('/signin',[
+            'uses' => 'UsersController@getSignin',
+            'as' => 'users.signin'
+        ]);
+
+        Route::post('/signin',[
+            'uses' => 'UsersController@postSignin',
+            'as' => 'users.signin'
+        ]);
+    });
+    Route::group(['middleware' =>'auth'], function(){
+        Route::get('/profile',[
+            'uses' => 'UsersController@getProfile',
+            'as' => 'users.profile'
+        ]);
+        Route::get('/logout',[
+            'uses' => 'UsersController@getLogout',
+            'as' => 'users.logout'
+        ]);
+    });
+
 });
 
 

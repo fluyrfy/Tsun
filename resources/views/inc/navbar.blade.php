@@ -11,19 +11,23 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <ul class="dropdown-menu">
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              會員中心
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                @if (Auth::check())
+                    <a class="dropdown-item" href="{{ route('users.profile') }}">會員資料</a>
+                    <a class="dropdown-item" href="{{ route('users.logout') }}">登出</a>
+                @else
+                    <a class="dropdown-item" href="{{ route('users.signup') }}">註冊</a>
+                    <a class="dropdown-item" href="{{ route('users.signin') }}">登入</a>
+                @endif
+            </div>
+          </li>
+      </ul>
     </ul>
   </div>
 </nav>
