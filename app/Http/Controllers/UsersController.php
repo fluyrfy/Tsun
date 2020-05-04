@@ -32,7 +32,7 @@ class UsersController extends Controller
 
         Auth::login($users);
 
-        return redirect()->route('users.signin')->with('message','註冊成功~');
+        return redirect()->route('order.eatin')->with('message','註冊成功，已登入...');
 
     }
     public function getSignin()
@@ -47,7 +47,7 @@ class UsersController extends Controller
         ]);
         if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password]))
         {
-            return redirect('/diningmethod')->with('message','登入成功!!');
+            return redirect()->route('order.eatin')->with('message','登入成功!!');
         }
         return redirect()->back()->with('error','電話or密碼錯誤!!');
 

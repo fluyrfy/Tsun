@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'PagesController@index');
+Route::get('/', [
+    'uses' => 'PagesController@index',
+    'as' => 'pages.index'
+    ]);
 Route::get('/diningmethod', [
     'uses' => 'PagesController@diningmethod',
     'as' => 'order.diningmethod'
