@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect()->route('order.diningmethod');
+            return redirect()->route('order.eatin');
         }
 
         return $next($request);

@@ -17,7 +17,7 @@ class ProductController extends Controller
     }
 
     public function getAddToCart(Request $request, $id)
-    {   
+    {
         if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password]))
         {
         $product = Product::find($id);
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $request->session()->put('cart, $cart');
         return redirect('/eatin');
         }
-        else 
+        else
         {
             return redirect()->route('users.signin')->with('error','請先登入');
         }
@@ -40,7 +40,7 @@ class ProductController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('shop.shopping-cart',['products' => $cart->items, 
+        return view('shop.shopping-cart',['products' => $cart->items,
         'totalPrice' =>$cart->totalPrice]);
     }
 }

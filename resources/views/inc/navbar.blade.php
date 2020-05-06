@@ -8,14 +8,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      {{-- <li class="nav-item active">
-        <a class="nav-link" href="#">聯絡店家 <span class="sr-only">(current)</span></a>
-      </li> --}}
+        @if (Auth::check())
+            <li class="nav-item active">
+                <a class="nav-link" href="#">購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+            </li>
+        @endif
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               會員中心
             </a>
-          @if (Auth::check())  
+          @if (Auth::check())
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('users.profile') }}">會員資料</a>
                 <a class="dropdown-item" href="{{ route('users.logout') }}">登出</a>
@@ -27,9 +30,9 @@
             </div>
            @endif
           </li>
-        
 
-      
+
+
     </ul>
   </div>
 </nav>
