@@ -2,18 +2,22 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-  <a class="navbar-brand" href="{{ route('pages.index') }}">村</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ route('pages.index') }}">村</a>
+    </div>
+    {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> --}}
+    {{-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> --}}
+      <ul class="navbar-nav">
+         
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         @if (Auth::check())
-            <li class="nav-item active">
-                <a class="nav-link" href="#">購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
-            </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#">購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+          </li>
         @endif
-
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               會員中心
@@ -28,11 +32,9 @@
                     <a class="dropdown-item" href="{{ route('users.signup') }}">註冊</a>
                     <a class="dropdown-item" href="{{ route('users.signin') }}">登入</a>
             </div>
-           @endif
-          </li>
-
-
-
-    </ul>
+          @endif
+        </li>
+      </ul>
+    {{-- </div> --}}
   </div>
 </nav>
