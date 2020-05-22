@@ -10,12 +10,13 @@
     </button> --}}
     {{-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> --}}
       <ul class="navbar-nav">
-         
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::check())
           <li class="nav-item active">
-              <a class="nav-link" href="#">購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+              <a class="nav-link" href="{{ route('product.shoppingCart') }}">購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+
           </li>
         @endif
         <li class="nav-item dropdown">
