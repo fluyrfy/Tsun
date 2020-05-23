@@ -13,6 +13,7 @@ use Stripe\Stripe;
 use Stripe\Charge;
 use Auth;
 
+
 class ProductController extends Controller
 {
     public function getIndex(){
