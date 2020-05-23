@@ -27,7 +27,7 @@
               <p class="card-text title">{{ $product->title }}</p>
               <div class="clearfix">
               <div class="pull-left price">{{ $product->price }}元</div>
-              <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right" role="button" >加入購物車</a>
+                <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right" role="button" >加入購物車</a>
               </div>
             </div>
           </div>
