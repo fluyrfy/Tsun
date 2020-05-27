@@ -41,11 +41,18 @@ Route::get('/shopping-cart', [
 Route::get('/reduce/{id}', 'ProductController@getReductByOne')->name('product.reduceByOne');
 Route::get('/remove/{id}', 'ProductController@getRemoveItem')->name('product.remove');
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
-    Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
-});
+// Route::group(['middleware' => 'auth'], function()
+// {
 
+// });
+Route::get('/checkout', [
+    'uses' => 'ProductController@getCheckout',
+    'as' => 'checkout'
+    ]);
+Route::post('/checkout', [
+    'uses' => 'ProductController@postCheckout',
+    'as' => 'checkout'
+    ]);
 Route::group(['prefix' => 'users'], function ()
 {
     Route::group(['middleware' =>'guest'], function()

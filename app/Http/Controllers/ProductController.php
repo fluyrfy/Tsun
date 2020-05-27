@@ -21,6 +21,7 @@ class ProductController extends Controller
         return view('order.eatin', ['products' => $products]);
     }
 
+    //購物車
     public function getAddToCart(Request $request, $id){
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
@@ -71,6 +72,7 @@ class ProductController extends Controller
 
     }
 
+    // 結帳
     public function getCheckout(){
         if (!Session::has('cart')) {
             return view('shop.shopping-cart');
