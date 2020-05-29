@@ -41,14 +41,19 @@
         document.getElementById(divId).style.display = element.value == "credit" ? 'block' : 'none';
     }
 </script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="{{ URL::to('js/checkout.js') }}"></script>
 <body>
     <div id="main-container" class="container">
+        <div id="charge-error" class="alert alert-danger" {{ !Session::has('error') ? 'hidden' : '' }}>
+            {{ Session::get('error') }}
+        </div>
         <div id="form1">
             <center>
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-            <form action="{{ route('checkout') }}" method="post">
+            <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -66,7 +71,7 @@
                             　<option value="11">11</option>
                             　<option value="12">12</option>
                             　<option value="13">13</option>
-                            <option value="17">17</option>
+                              <option value="17">17</option>
                             　<option value="18">18</option>
                             　<option value="19">19</option>
                         </select>時
@@ -136,10 +141,10 @@
                             </div>
                     </div>
                     <p>
+                        {{ csrf_field() }}
                         <input type="submit" value="確定">
                     </p>
                 </b>
-                {{ csrf_field() }}
             </form>
         </div>
     </div>
