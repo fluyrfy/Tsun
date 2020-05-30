@@ -93,6 +93,15 @@
                         <select name="takeout">
                             　<option value="yes">是</option>
                             　<option value="no">否</option>
+                              <option value="notneed">無</option>
+                        </select>
+                    </p>
+                    <p>
+                        用餐方式：
+                        <select name="diningway">
+                            　<option value="forhere">內用</option>
+                            　<option value="togo">外帶</option>
+                              <option value="delivery">外送</option>
                         </select>
                     </p>
                     <p>

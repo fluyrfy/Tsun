@@ -21,14 +21,15 @@
     @if(Session::has('cart'))
         <div class="container">
             <div class="item_header">
-                <div class="name" style="width:200px">商品</div>
+                <div class="name" style="width:35%">商品</div>
                 <div class="price" style="width:200px">金額</div>
-                <div class="count" style="width:260px">數量</div>
+                <div class="count" style="width:280px">數量</div>
                 <div class="delete" style="width:200px">編輯</div>
             </div>
             @foreach($products as $product)
                 <div class="container">
                     <div class="item_header item_body">
+                        <p><img src={{$product['item']['imagePath']}} width="150" height="90"></p>
                         <div class="name">{{$product['item']['title']}}</div>
                         <div class="price"><span>$</span>{{$product['price']}}</div>
                         <div class="count">{{$product['qty']}}</div>
@@ -43,7 +44,7 @@
             @endforeach
             <div class="item_container">
                 <div class="item_header item_body">
-                    <div style="width:240px;text-align:right"><strong>總計金額 : ${{$totalPrice}}{{--總金額--}}</strong></div>
+                    <div style="width:240px;text-align:right"><strong>總計金額 : ${{$totalPrice}}</strong></div>
                     <div style="width:460px;text-align:right"><a href="{{route('checkout')}}" type="button" class="btn btn-success">結帳</a></div>
                 </div>
             </div>
