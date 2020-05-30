@@ -90,27 +90,27 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
-        Stripe::setApiKey('sk_test_fMPXxzuYp7KofG5ZTXPOEU73');
+        Stripe::setApiKey('sk_test_qzzTn9h3LuEueBJxHVx2qYWT00zHooQWc3');
         try {
-            $charge = Charge::create(array(
-                "amount" => $cart->totalPrice * 100,
+            Charge::create(array(
+                "amount" => $cart->totalPrice,
                 "currency" => "usd",
-                "source" => $request->input('stripeToken'), // obtained with Stripe.js
-                "description" => "Test Charge"
+                 "source" => 'tok_visa',//$request->input('stripeToken'), // obtained with Stripe.js
+                "description" => "便當購買"
             ));
 
-            $order = new Order();
-            $order->cart = serialize($cart);
-            $order->name = $request->input('name');
-            $order->address = $request->input('address');
-            $order->payment_id = $charge->id;
+            // $order = new Order();
+            // $order->cart = serialize($cart);
+            // $order->name = $request->input('name');
+            // $order->address = $request->input('address');
+            // $order->payment_id = $charge->id;
 
-            Auth::user()->orders()->save($order);
+            // Auth::user()->orders()->save($order);
         } catch (\Exception $e) {
             return redirect()->route('checkout')->with('error', $e->getMessage());
         }
 
         Session::forget('cart');
-        return redirect()->route('product.index')->with('success', 'Successfully purchased products!');
+        return redirect()->route('order.eatin')->with('success', '購買成功！');
     }
 }

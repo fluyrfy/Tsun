@@ -41,14 +41,20 @@
         document.getElementById(divId).style.display = element.value == "credit" ? 'block' : 'none';
     }
 </script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="{{ URL::to('js/checkout.js') }}"></script>
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
 <body>
     <div id="main-container" class="container">
+        <div id="charge-error" class="alert alert-danger" {{ !Session::has('error') ? 'hidden' : '' }}>
+            {{ Session::get('error') }}
+        </div>
         <div id="form1">
             <center>
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-            <form action="{{ route('checkout') }}" method="post">
+            
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -66,7 +72,7 @@
                             　<option value="11">11</option>
                             　<option value="12">12</option>
                             　<option value="13">13</option>
-                            <option value="17">17</option>
+                              <option value="17">17</option>
                             　<option value="18">18</option>
                             　<option value="19">19</option>
                         </select>時
@@ -112,6 +118,7 @@
                             　<option value="mobile">行動支付</option>
                         </select>
                     </p>
+                    <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                     <div  id="creditcard" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
@@ -125,11 +132,15 @@
                             <label for="card-name">持卡人姓名</label>
                             <input type="text" id="card-name" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label for="card-name">卡號</label>
+                            <input type="text" id="card-number" class="form-control" required>
+                        </div>
                             <div class="form-group">
                                 <label for="card-expiry-month">
                                     到期月
                                 </label>
-                                <input type="text" id="card-expiry-year" class="form-control" required>
+                                <input type="text" id="card-expiry-month" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="card-expiry-year">
@@ -145,10 +156,10 @@
                             </div>
                     </div>
                     <p>
+                        {{ csrf_field() }}
                         <input type="submit" value="確定">
                     </p>
                 </b>
-                {{ csrf_field() }}
             </form>
         </div>
     </div>
