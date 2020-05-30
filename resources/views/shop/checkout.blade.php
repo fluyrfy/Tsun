@@ -43,6 +43,7 @@
 </script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="{{ URL::to('js/checkout.js') }}"></script>
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
 <body>
     <div id="main-container" class="container">
         <div id="charge-error" class="alert alert-danger" {{ !Session::has('error') ? 'hidden' : '' }}>
@@ -53,7 +54,7 @@
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-            <form action="{{ route('checkout') }}" method="post" id="checkout-form">
+            
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -108,6 +109,7 @@
                             　<option value="mobile">行動支付</option>
                         </select>
                     </p>
+                    <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                     <div  id="creditcard" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
@@ -121,11 +123,15 @@
                             <label for="card-name">持卡人姓名</label>
                             <input type="text" id="card-name" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label for="card-name">卡號</label>
+                            <input type="text" id="card-number" class="form-control" required>
+                        </div>
                             <div class="form-group">
                                 <label for="card-expiry-month">
                                     到期月
                                 </label>
-                                <input type="text" id="card-expiry-year" class="form-control" required>
+                                <input type="text" id="card-expiry-month" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="card-expiry-year">
