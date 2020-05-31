@@ -32,6 +32,12 @@ class UsersController extends Controller
 
         Auth::login($users);
 
+        if(Session::has('oldUrl'){
+            $oldUrl=Session::get('oldUrl');
+            Session::forget('oldUrl');
+            return redirect()->to($oldUrl);
+        })
+
         return redirect()->route('order.eatin')->with('message','註冊成功，已登入...');
 
     }
@@ -47,6 +53,11 @@ class UsersController extends Controller
         ]);
         if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password]))
         {
+            if(Session::has('oldUrl'){
+                $oldUrl=Session::get('oldUrl');
+                Session::forget('oldUrl');
+                return redirect()->to($oldUrl);
+            })
             return redirect()->route('order.eatin')->with('message','登入成功!!');
         }
         return redirect()->back()->with('error','電話or密碼錯誤!!');
@@ -59,6 +70,6 @@ class UsersController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('pages.index');
     }
 }

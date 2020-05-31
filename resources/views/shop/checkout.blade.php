@@ -54,7 +54,7 @@
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-            
+
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -122,11 +122,11 @@
                     <div  id="creditcard" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name"  name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="address">住址</label>
-                            <input type="text" id="address" class="form-control" required>
+                            <input type="text" id="address" name="address" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="card-name">持卡人姓名</label>
