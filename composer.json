@@ -15,6 +15,7 @@
         "laravel/framework": "^7.9",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "nexmo/laravel": "^2.2",
         "stripe/stripe-php": "3.*"
     },
     "require-dev": {
