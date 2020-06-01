@@ -99,7 +99,7 @@
                         <select name="takeout">
                             　<option value="yes">是</option>
                             　<option value="no">否</option>
-                              <option value="notneed">無</option>
+                              <option value="other">X</option>
                         </select>
                     </p>
                     <p>
@@ -113,9 +113,8 @@
                     <p>
                         支付方式：
                         <select id="myselect" name="pay" onchange="showDiv('creditcard', this)">
-                            　<option value="store">到店付款(現金/信用卡/行動支付)</option>
+                            　<option value="store">到店付款(現金/信用卡)</option>
                             　<option id="001" value="credit">信用卡支付</option>
-                            　<option value="mobile">行動支付</option>
                         </select>
                     </p>
                     <form action="{{ route('checkout') }}" method="post" id="checkout-form">
