@@ -12,6 +12,8 @@ use App\Cart;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Illuminate\Support\Facades\Auth;
+use Nexmo\Laravel\Facade\Nexmo;
+use App\User;
 
 
 class ProductController extends Controller
@@ -85,7 +87,7 @@ class ProductController extends Controller
 
     public function postCheckout(Request $request){
         if (!Session::has('cart')) {
-            return redirect()->route('shop.shoppingCart');
+            return redirect()->route('product.shoppingCart');
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
@@ -111,6 +113,17 @@ class ProductController extends Controller
         }
 
         Session::forget('cart');
+
+        // $phonenum=User::find($phone);
+        Nexmo::message()->send(
+            [
+
+                'to' => '88665800635',
+                'from' => '88665800635',
+                'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
+                'type' => 'unicode'
+            ]
+            );
         return redirect()->route('order.eatin')->with('success', '購買成功！');
     }
 }
