@@ -16,6 +16,7 @@ class UsersController extends Controller
     {
         return view('users.signup');
     }
+
     public function postSignup(Request $request)
     {
         $this->validate($request,[
@@ -32,19 +33,21 @@ class UsersController extends Controller
 
         Auth::login($users);
 
-        if(Session::has('oldUrl'){
+        if(Session::has('oldUrl')) {
             $oldUrl=Session::get('oldUrl');
             Session::forget('oldUrl');
             return redirect()->to($oldUrl);
-        })
+        }
 
         return redirect()->route('order.eatin')->with('message','註冊成功，已登入...');
 
     }
+
     public function getSignin()
     {
         return view('users.signin');
     }
+
     public function postSignin(Request $request)
     {
         $this->validate($request,[
@@ -53,20 +56,22 @@ class UsersController extends Controller
         ]);
         if (Auth::attempt(['phone' => $request->phone, 'password' => $request->password]))
         {
-            if(Session::has('oldUrl'){
+            if(Session::has('oldUrl')){
                 $oldUrl=Session::get('oldUrl');
                 Session::forget('oldUrl');
                 return redirect()->to($oldUrl);
-            })
+            }
             return redirect()->route('order.eatin')->with('message','登入成功!!');
         }
         return redirect()->back()->with('error','電話or密碼錯誤!!');
 
     }
+
     public function getProfile()
     {
         return view('users.profile');
     }
+
     public function getLogout()
     {
         Auth::logout();
