@@ -46,11 +46,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="item_container">
-                <div class="item_header item_body">
-                    <div style="width:720px;text-align:right"><strong>總計金額 : ${{$totalPrice}}</strong></div>
-                </div>
-            </div>
+            <div style="width:100%;text-align:center"><p><strong>總計金額 : ${{$totalPrice}}</strong></p></div>
             <div style="width:100%;text-align:center">
                 <p>
                     <a href="{{route('order.eatin')}}"><input type="button" value="回到點餐畫面" style="width:120px;height:40px;border:2px rgb(55, 103, 148) dashed;font-family: Microsoft JhengHei;background-color:white;"></a>
