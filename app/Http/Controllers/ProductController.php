@@ -11,7 +11,9 @@ use Session;
 use App\Cart;
 use Stripe\Stripe;
 use Stripe\Charge;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Nexmo\Laravel\Facade\Nexmo;
+use App\User;
 
 
 class ProductController extends Controller
@@ -85,32 +87,43 @@ class ProductController extends Controller
 
     public function postCheckout(Request $request){
         if (!Session::has('cart')) {
-            return redirect()->route('shop.shoppingCart');
+            return redirect()->route('product.shoppingCart');
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 
         Stripe::setApiKey('sk_test_qzzTn9h3LuEueBJxHVx2qYWT00zHooQWc3');
         try {
-            Charge::create(array(
+            $charge = Charge::create(array(
                 "amount" => $cart->totalPrice,
                 "currency" => "usd",
                  "source" => 'tok_visa',//$request->input('stripeToken'), // obtained with Stripe.js
                 "description" => "便當購買"
             ));
 
-            // $order = new Order();
-            // $order->cart = serialize($cart);
-            // $order->name = $request->input('name');
-            // $order->address = $request->input('address');
-            // $order->payment_id = $charge->id;
+            $order = new Order();
+            $order->cart = serialize($cart);
+            $order->name = $request->input('name');
+            $order->address = $request->input('address');
+            $order->payment_id = $charge->id;
 
-            // Auth::user()->orders()->save($order);
+            Auth::user()->orders()->save($order);
         } catch (\Exception $e) {
             return redirect()->route('checkout')->with('error', $e->getMessage());
         }
 
         Session::forget('cart');
+
+        // $phonenum=User::find($phone);
+        Nexmo::message()->send(
+            [
+
+                'to' => '886965800635',
+                'from' => '886912345678',
+                'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
+                'type' => 'unicode'
+            ]
+            );
         return redirect()->route('order.eatin')->with('success', '購買成功！');
     }
 }
