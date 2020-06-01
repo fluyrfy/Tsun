@@ -118,8 +118,8 @@ class ProductController extends Controller
         Nexmo::message()->send(
             [
 
-                'to' => '88665800635',
-                'from' => '88665800635',
+                'to' => '886965800635',
+                'from' => '886912345678',
                 'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
                 'type' => 'unicode'
             ]
