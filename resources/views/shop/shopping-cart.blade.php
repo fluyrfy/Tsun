@@ -21,19 +21,23 @@
     @if(Session::has('cart'))
         <div class="container">
             <div class="item_header">
-                <div class="name" style="width:35%">商品</div>
-                <div class="price" style="width:200px">金額</div>
-                <div class="count" style="width:280px">數量</div>
-                <div class="delete" style="width:200px">編輯</div>
+                <div class="item_detail">商品</div>
+                <div class="price">單價</div>
+                <div class="count">數量</div>
+                <div class="amount">總計</div>
+                <div class="operate"></div>
             </div>
             @foreach($products as $product)
                 <div class="container">
                     <div class="item_header item_body">
-                        <p><img src={{$product['item']['imagePath']}} width="150" height="90"></p>
-                        <div class="name">{{$product['item']['title']}}</div>
-                        <div class="price"><span>$</span>{{$product['price']}}</div>
+                        <div class="item_detail">
+                            <img src={{$product['item']['imagePath']}} width="110" height="70">
+                            <div class="name">{{$product['item']['title']}}</div>
+                        </div>
+                        <div class="price"><span>$</span>{{$product['item']['price']}}</div>
                         <div class="count">{{$product['qty']}}</div>
-                        <div class="delete">
+                        <div class="amount"><span>$</span>{{$product['price']}}</div>
+                        <div class="operate">
                             <ul>點這裡編輯
                                 <li><a href="{{route('product.reduceByOne', ['id' => $product['item']['id']])}}">數量減一</a></li>
                                 <li><a href="{{route('product.remove', ['id' => $product['item']['id']])}}">刪除</a></li>
@@ -44,15 +48,16 @@
             @endforeach
             <div class="item_container">
                 <div class="item_header item_body">
-                    <div style="width:240px;text-align:right"><strong>總計金額 : ${{$totalPrice}}</strong></div>
-                    <div style="width:460px;text-align:right"><a href="{{route('checkout')}}" type="button" class="btn btn-success">結帳</a></div>
+                    <div style="width:720px;text-align:right"><strong>總計金額 : ${{$totalPrice}}</strong></div>
                 </div>
             </div>
-            <div style="width:100%;text-align:center" class="btn btn-primary">
-                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" onclick="location.href='{{route('order.eatin')}}'">
-                    回到點餐畫面
-                </button>
+            <div style="width:100%;text-align:center">
+                <p>
+                    <a href="{{route('order.eatin')}}"><input type="button" value="回到點餐畫面" style="width:120px;height:40px;border:2px rgb(55, 103, 148) dashed;font-family: Microsoft JhengHei;background-color:white;"></a>
+                    <a href="{{route('checkout')}}"><input type="button" value="結帳" style="width:120px;height:40px;border:2px rgb(241, 11, 11) dashed;font-family: Microsoft JhengHei;background-color:white;"></a>
+                </p>
             </div>
+            
         </div>
         {{-- <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
