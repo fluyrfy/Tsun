@@ -40,6 +40,30 @@
     {
         document.getElementById(divId).style.display = element.value == "credit" ? 'block' : 'none';
     }
+    // function delivery(Id, ele)
+    // {
+    //     document.getElementById(Id).style.display = ele.value == "delivery" ? 'block' : 'none';
+    // }
+    function cash(Id, ele)
+    {
+        document.getElementById(Id).style.display = ele.value == "store" ? 'block' : 'none';
+    }
+    function showaddress(val) {
+    if (val == 'delivery') {
+        document.getElementById("localaddress").style.display = "";
+        setRequired(true);
+    } else {
+        document.getElementById("localaddress").style.display = "none";
+        setRequired(false);
+    }
+}
+
+function setRequired(val){
+    input = document.getElementById("localaddress").getElementsByTagName('input');
+    for(i = 0; i < input.length; i++){
+        input[i].required = val;
+    }
+}
 </script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="{{ URL::to('js/checkout.js') }}"></script>
@@ -54,7 +78,7 @@
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-
+            <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -68,7 +92,7 @@
                             document.write(Today.getFullYear() + " 年 " + (Today.getMonth() + 1) + " 月 " + Today.getDate() + " 日");
                         </script>
 
-                        <select name="time">
+                        <select name="time1">
                             　<option value="11">11</option>
                             　<option value="12">12</option>
                             　<option value="13">13</option>
@@ -76,7 +100,7 @@
                             　<option value="18">18</option>
                             　<option value="19">19</option>
                         </select>時
-                        <select name="time">
+                        <select name="time2">
                             　<option value="00">00</option>
                             　<option value="05">05</option>
                             　<option value="10">10</option>
@@ -99,34 +123,44 @@
                         <select name="takeout">
                             　<option value="yes">是</option>
                             　<option value="no">否</option>
-                              <option value="other">X</option>
                         </select>
                     </p>
                     <p>
                         用餐方式：
-                        <select name="diningway">
+                        <select name="diningway" onchange="delivery('localaddress', this)">
                             　<option value="forhere">內用</option>
                             　<option value="togo">外帶</option>
                               <option value="delivery">外送</option>
                         </select>
+                        <div  id="localaddress" class="form-group" style="display:none">
+                            <label for="address">住址</label>
+                            <div class="input">
+                                <input type="text" id="address" name="address" class="form-control" required>
+                            </div>
+                        </div>
                     </p>
                     <p>
                         支付方式：
-                        <select id="myselect" name="pay" onchange="showDiv('creditcard', this)">
-                            　<option value="store">到店付款(現金/信用卡)</option>
-                            　<option id="001" value="credit">信用卡支付</option>
+                        <select id="myselect" name="pay" onchange="cash('cash', this),showDiv('creditcard', this)">
+                            <option value="select">--選擇付款方式--</option>　
+                            <option value="store">到店付款(現金/信用卡)</option>
+                            <option value="credit">信用卡支付</option>
                         </select>
-                    </p>
-                    <form action="{{ route('checkout') }}" method="post" id="checkout-form">
-                    <div  id="creditcard" class="row" style="display:none">
+                    <div  id="cash" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" id="name"  name="name" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="address">住址</label>
-                            <input type="text" id="address" name="address" class="form-control" required>
-                        </div>
+                        <center>
+                            <p>
+                                {{ csrf_field() }}
+                                <input type="submit" value="確定">
+                            </p>
+                            </center>
+                    </div>
+                    
+                    <div>
+                    <div  id="creditcard" class="row" style="display:none">
                         <div class="form-group">
                             <label for="card-name">持卡人姓名</label>
                             <input type="text" id="card-name" class="form-control" required>
@@ -153,11 +187,15 @@
                                 </label>
                                 <input type="text" id="card-cvc" class="form-control" required>
                             </div>
+                        </p>
+                            <center>
+                            <p>
+                                {{ csrf_field() }}
+                                <input type="submit" value="確定">
+                            </p>
+                            </center>
                     </div>
-                    <p>
-                        {{ csrf_field() }}
-                        <input type="submit" value="確定">
-                    </p>
+                    
                 </b>
             </form>
         </div>

@@ -14,6 +14,7 @@ use Stripe\Charge;
 use Illuminate\Support\Facades\Auth;
 use Nexmo\Laravel\Facade\Nexmo;
 use App\User;
+use Carbon\Carbon;
 
 
 class ProductController extends Controller
@@ -103,9 +104,12 @@ class ProductController extends Controller
 
             $order = new Order();
             $order->cart = serialize($cart);
+            $time = Carbon::now()->toDateString().' '.$request->input('time1').':'.$request->input('time2');//取餐時間
+            $order->time = $time;
             $order->name = $request->input('name');
             $order->address = $request->input('address');
             $order->payment_id = $charge->id;
+
 
             Auth::user()->orders()->save($order);
         } catch (\Exception $e) {
@@ -118,7 +122,7 @@ class ProductController extends Controller
         Nexmo::message()->send(
             [
 
-                'to' => '886965800635',
+                'to' => '886925311245',
                 'from' => '886912345678',
                 'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
                 'type' => 'unicode'
