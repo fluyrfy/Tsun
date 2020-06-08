@@ -39,11 +39,6 @@
     function showDiv(divId, element)
     {
         document.getElementById(divId).style.display = element.value == "credit" ? 'block' : 'none';
-        document.getElementById("card-name").required = true;
-        document.getElementById("card-number").required = true;
-        document.getElementById("card-expiry-month").required = true;
-        document.getElementById("card-expiry-year").required = true;
-        document.getElementById("card-cvc").required = true;
     }
     // function delivery(Id, ele)
     // {
@@ -52,7 +47,6 @@
     function cash(Id, ele)
     {
         document.getElementById(Id).style.display = ele.value == "store" ? 'block' : 'none';
-        document.getElementById("name").required = true;
     }
     function showaddress(val) {
         if (val == 'delivery') {
@@ -60,6 +54,7 @@
             document.getElementById("address").required = true;
         } else {
             document.getElementById("localaddress").style.display = "none";
+            document.getElementById("address").required = false;
         }
     }
 
@@ -144,6 +139,25 @@ function setRequired(val){
                             <option value="store">到店付款(現金/信用卡)</option>
                             <option value="credit">信用卡支付</option>
                         </select>
+                        <script>
+                            if($("#myselect").val == "credit"){
+                                document.getElementById("card-name").required = true;
+                                document.getElementById("card-number").required = true;
+                                document.getElementById("card-expiry-month").required = true;
+                                document.getElementById("card-expiry-year").required = true;
+                                document.getElementById("card-cvc").required = true;
+                                document.getElementById("name").required = false;
+                            
+                            }
+                            else{
+                                document.getElementById("name").required = true;
+                                document.getElementById("card-name").required = false;
+                                document.getElementById("card-number").required = false;
+                                document.getElementById("card-expiry-month").required = false;
+                                document.getElementById("card-expiry-year").required = false;
+                                document.getElementById("card-cvc").required = false;
+                            }
+                        </script>
                      <div  id="cash" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
@@ -165,23 +179,23 @@ function setRequired(val){
                     <div  id="creditcard" class="row" style="display:none">
                         <div class="form-group">
                             <label for="card-name">持卡人姓名</label>
-                            <input type="text" id="card-name" class="form-control">
+                            <input type="text" id="card-name" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="card-name">卡號</label>
-                            <input type="text" id="card-number" class="form-control">
+                            <input type="text" id="card-number" class="form-control" >
                         </div>
                             <div class="form-group">
                                 <label for="card-expiry-month">
                                     到期月
                                 </label>
-                                <input type="text" id="card-expiry-month" class="form-control">
+                                <input type="text" id="card-expiry-month" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label for="card-expiry-year">
                                     到期年
                                 </label>
-                                <input type="text" id="card-expiry-year" class="form-control">
+                                <input type="text" id="card-expiry-year" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label for="card-cvc">
