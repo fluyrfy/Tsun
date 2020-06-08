@@ -54,7 +54,7 @@
             document.getElementById("address").required = true;
         } else {
             document.getElementById("localaddress").style.display = "none";
-            document.getElementById("address").required = false;
+            // document.getElementById("address").required = false;
         }
     }
 
@@ -146,8 +146,8 @@ function setRequired(val){
                                 document.getElementById("card-expiry-month").required = true;
                                 document.getElementById("card-expiry-year").required = true;
                                 document.getElementById("card-cvc").required = true;
-                                document.getElementById("name").required = false;
-                            
+                                document.getElementById("name").required = true;
+
                             }
                             else{
                                 document.getElementById("name").required = true;
@@ -174,16 +174,20 @@ function setRequired(val){
                             </p>
                             </center>
                     </div>
-                    
+
                     <div>
                     <div  id="creditcard" class="row" style="display:none">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name"  name="name" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label for="card-name">持卡人姓名</label>
                             <input type="text" id="card-name" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="card-name">卡號</label>
-                            <input type="text" id="card-number" class="form-control" >
+                            <input type="text" id="card-number" name="card-name" class="form-control" >
                         </div>
                             <div class="form-group">
                                 <label for="card-expiry-month">
@@ -215,7 +219,7 @@ function setRequired(val){
                             </p>
                             </center>
                     </div>
-                    
+
                 </b>
             </form>
         </div>

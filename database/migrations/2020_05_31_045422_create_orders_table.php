@@ -21,10 +21,11 @@ class CreateOrdersTable extends Migration
             $table->string('time');//取餐時間
             $table->string('method');
             $table->string('pay');
-            $table->text('address');
-            $table->string('name');
-            $table->string('payment_id');
-            $table->string('remark');
+            $table->text('address')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('cardnum')->nullable();
+            // $table->string('payment_id')->nullable();
+            $table->string('remark')->nullable();
         });
     }
 

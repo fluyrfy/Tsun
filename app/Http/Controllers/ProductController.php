@@ -110,7 +110,8 @@ class ProductController extends Controller
             $order->method = $request->input('diningway');
             $order->pay = $request->input('pay');
             $order->address = $request->input('address');
-            $order->payment_id = $charge->id;
+            $order->cardnum = $request->input('card-number');
+            // $order->payment_id = $charge->id;
             $order->remark = $request->input('remark');
 
 
