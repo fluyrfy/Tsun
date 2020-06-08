@@ -127,14 +127,14 @@ function setRequired(val){
                     </p>
                     <p>
                         用餐方式：
-                        <select name="diningway" onchange="delivery('localaddress', this)">
+                        <select name="diningway" onchange="showaddress(this.value)">
                             　<option value="forhere">內用</option>
                             　<option value="togo">外帶</option>
                               <option value="delivery">外送</option>
                         </select>
-                        <div  id="localaddress" class="form-group" style="display:none">
-                            <label for="address">住址</label>
-                            <div class="input">
+                        <div  id="localaddress" class="row" style="display:none">
+                            <div class="form-group">
+                                <label for="address">住址</label>
                                 <input type="text" id="address" name="address" class="form-control" required>
                             </div>
                         </div>
@@ -146,7 +146,7 @@ function setRequired(val){
                             <option value="store">到店付款(現金/信用卡)</option>
                             <option value="credit">信用卡支付</option>
                         </select>
-                    <div  id="cash" class="row" style="display:none">
+                     <div  id="cash" class="row" style="display:none">
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" id="name"  name="name" class="form-control" required>
