@@ -15,8 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         
           <li class="nav-item active">
-              <a class="nav-link" href="{{ route('product.shoppingCart') }}"><span class="fa fa-shopping-cart"></span> 購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
-            
+            <a class="nav-link" href="{{ route('product.shoppingCart') }}"><span class="fa fa-shopping-cart"></span> 購物車 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
           </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

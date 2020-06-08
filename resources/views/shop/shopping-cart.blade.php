@@ -94,9 +94,7 @@
             <div class="container">
                 <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
                     <h2>您未選購任何商品！</h2>
-                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" onclick="location.href='{{route('order.eatin')}}'">
-                        回到點餐畫面
-                    </button>
+                    <a href="{{route('order.eatin')}}"><input type="button" value="回到點餐畫面" style="width:120px;height:40px;border:2px rgb(55, 103, 148) dashed;font-family: Microsoft JhengHei;background-color:white;"></a>
                 </div>
             </div>
         </center>
