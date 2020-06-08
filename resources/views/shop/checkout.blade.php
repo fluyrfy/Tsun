@@ -119,13 +119,6 @@ function setRequired(val){
                         <font color="red">(營業時間：11:00~14:00、17:00~20:00)</font>
                     </p>
                     <p>
-                        外帶自備餐盒：
-                        <select name="takeout">
-                            　<option value="yes">是</option>
-                            　<option value="no">否</option>
-                        </select>
-                    </p>
-                    <p>
                         用餐方式：
                         <select name="diningway" onchange="showaddress(this.value)">
                             　<option value="forhere">內用</option>
@@ -150,6 +143,10 @@ function setRequired(val){
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" id="name"  name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="remark">備註</label>
+                            <input type="text" id="remark"  name="remark" class="form-control" placeholder="外帶自備餐盒或口味調整請填寫此處^^">
                         </div>
                         <center>
                             <p>
@@ -186,6 +183,10 @@ function setRequired(val){
                                     安全碼
                                 </label>
                                 <input type="text" id="card-cvc" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="remark">備註</label>
+                                <input type="text" id="remark"  name="remark" class="form-control" placeholder="外帶自備餐盒或口味調整請填寫此處^^">
                             </div>
                         </p>
                             <center>

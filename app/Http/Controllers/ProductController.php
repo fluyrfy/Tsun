@@ -107,8 +107,11 @@ class ProductController extends Controller
             $time = Carbon::now()->toDateString().' '.$request->input('time1').':'.$request->input('time2');//取餐時間
             $order->time = $time;
             $order->name = $request->input('name');
+            $order->method = $request->input('diningway');
+            $order->pay = $request->input('pay');
             $order->address = $request->input('address');
             $order->payment_id = $charge->id;
+            $order->remark = $request->input('remark');
 
 
             Auth::user()->orders()->save($order);

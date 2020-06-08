@@ -19,9 +19,12 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->text('cart');
             $table->string('time');//取餐時間
+            $table->string('method');
+            $table->string('pay');
             $table->text('address');
             $table->string('name');
             $table->string('payment_id');
+            $table->string('remark');
         });
     }
 
