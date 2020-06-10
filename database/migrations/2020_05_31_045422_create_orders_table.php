@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('time');//取餐時間
             $table->string('method');
             $table->string('pay');
+            $table->integer('phone')->nullable();
             $table->text('address')->nullable();
             $table->string('name')->nullable();
             $table->integer('cardnum')->nullable();

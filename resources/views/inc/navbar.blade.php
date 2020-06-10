@@ -23,7 +23,7 @@
             </a>
           @if (Auth::check())
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="{{ route('users.profile') }}">會員資料</a>
+                <a class="dropdown-item" href="{{ route('users.profile') }}">訂單查詢</a>
                 <a class="dropdown-item" href="{{ route('users.logout') }}">登出</a>
             </div>
                 @else

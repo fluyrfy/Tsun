@@ -78,7 +78,7 @@ function setRequired(val){
                 <font color="black" size="6">訂購資訊</font>
             </center>
 
-            <form action="{{ route('checkout') }}" method="post" id="checkout-form">
+            <form action="{{ route('checkout')}}" method="post" id="checkout-form">
                 <b>
                     <p>
                         總金額：${{ $total }}
@@ -164,6 +164,10 @@ function setRequired(val){
                             <input type="text" id="name"  name="name" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label for="name">連絡電話</label>
+                            <input type="text" id="phone"  name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label for="remark">備註</label>
                             <input type="text" id="remark"  name="remark" class="form-control" placeholder="外帶自備餐盒或口味調整請填寫此處^^">
                         </div>
@@ -180,6 +184,10 @@ function setRequired(val){
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" id="name"  name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">連絡電話</label>
+                            <input type="text" id="phone"  name="phone" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="card-name">持卡人姓名</label>

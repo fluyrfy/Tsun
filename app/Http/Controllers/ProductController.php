@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Nexmo\Laravel\Facade\Nexmo;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redis;
 
 
 class ProductController extends Controller
@@ -109,13 +110,25 @@ class ProductController extends Controller
             $order->name = $request->input('name');
             $order->method = $request->input('diningway');
             $order->pay = $request->input('pay');
+            $order->phone = $request->input('phone');  
             $order->address = $request->input('address');
             $order->cardnum = $request->input('card-number');
             // $order->payment_id = $charge->id;
             $order->remark = $request->input('remark');
-
+            
+            
 
             Auth::user()->orders()->save($order);
+            Nexmo::message()->send(
+                [
+                    $phone = Auth::user()->orders($phone),
+
+                    'to' => $phone,
+                    'from' => '886912345678',
+                    'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
+                    'type' => 'unicode'
+                ]
+                );
         } catch (\Exception $e) {
             return redirect()->route('checkout')->with('error', $e->getMessage());
         }
@@ -123,15 +136,8 @@ class ProductController extends Controller
         Session::forget('cart');
 
         // $phonenum=User::find($phone);
-        Nexmo::message()->send(
-            [
 
-                'to' => '886925311245',
-                'from' => '886912345678',
-                'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
-                'type' => 'unicode'
-            ]
-            );
+        
         return redirect()->route('order.eatin')->with('success', '購買成功！');
     }
 }
