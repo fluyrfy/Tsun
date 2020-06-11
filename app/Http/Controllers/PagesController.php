@@ -13,6 +13,10 @@ class PagesController extends Controller
     {
         return view('order.diningmethod');
     }
+    public function news()
+    {
+        return view('pages.news');
+    }
     /*public function test()
     {
         return view('order.test');

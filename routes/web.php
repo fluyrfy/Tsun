@@ -24,6 +24,10 @@ Route::get('/diningmethod', [
     'uses' => 'PagesController@diningmethod',
     'as' => 'order.diningmethod'
 ]);
+Route::get('/news', [
+    'uses' => 'PagesController@news',
+    'as' => 'pages.news'
+]);
 Route::get('/eatin', [
     'uses' => 'ProductController@getIndex',
     'as' => 'order.eatin'

@@ -22,6 +22,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="/css/start.css">
         {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        
     </head>
     <body>
         <center>

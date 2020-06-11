@@ -146,7 +146,7 @@ function setRequired(val){
                                 document.getElementById("card-expiry-month").required = true;
                                 document.getElementById("card-expiry-year").required = true;
                                 document.getElementById("card-cvc").required = true;
-                                document.getElementById("name").required = true;
+                                document.getElementById("name").required = false;
 
                             }
                             else{
