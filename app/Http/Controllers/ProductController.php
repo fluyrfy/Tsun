@@ -137,6 +137,11 @@ class ProductController extends Controller
         // $phonenum=User::find($phone);
 
         
-        return redirect()->route('order.eatin')->with('success', '購買成功！');
+        return redirect()->route('order.eatin')->with('message','購買成功！');
+    }
+
+    public function getOrders(){
+        $orders = Order::all();
+        return view('pages.orderin', ['orders' => $orders]);
     }
 }

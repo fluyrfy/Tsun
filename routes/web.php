@@ -29,8 +29,8 @@ Route::get('/news', [
     'as' => 'pages.news'
 ]);
 Route::get('/orderin', [
-    'uses' => 'PagesController@orderin',
-    'as' => 'pages.orderin'
+    'uses' => 'ProductController@getOrders',
+    'as' => 'get.orders'
 ]);
 Route::get('/eatin', [
     'uses' => 'ProductController@getIndex',

@@ -26,16 +26,16 @@
                             <td>訂單編號</td>
                             <td>下單時間</td>
                             <td>總金額</td>
-                            <td>訂單狀態</td>
                             <td>操作</td>
                             </tr>
-
-                            <tr><span style="font-size:14px"><td><a href="訂單詳細資料">202003201850</td>
-                            <td>2020-03-20 18:50:04</td>
+                            @foreach ($orders as $order)
+                            <tr><span style="font-size:14px"><td><a href="訂單詳細資料">{{ $order->id }}</td>
+                            <td>{{ $order->time }}</td>
                             <td>NT$156</td>
-                            <td>尚未完成</td>
                             <td><a href="取消訂單程序">取消訂單</a></td>
                             </span></tr>
+                            @endforeach
+                            
                 </div>
                     
                 </table>
