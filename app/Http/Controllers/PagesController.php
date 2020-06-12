@@ -17,6 +17,10 @@ class PagesController extends Controller
     {
         return view('pages.news');
     }
+    public function orderin()
+    {
+        return view('pages.orderin');
+    }
     /*public function test()
     {
         return view('order.test');
