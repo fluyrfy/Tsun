@@ -121,9 +121,8 @@ class ProductController extends Controller
             Auth::user()->orders()->save($order);
             Nexmo::message()->send(
                 [
-                    $phone = Auth::user()->orders($phone),
 
-                    'to' => $phone,
+                    'to' => '886965800635',
                     'from' => '886912345678',
                     'text' => '便當購買成功，請記得依規定時間來店取餐或向外送人員取餐',
                     'type' => 'unicode'
